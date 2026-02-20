@@ -1,0 +1,357 @@
+{
+  "info": {
+    "name": "Blog API Collection",
+    "_postman_id": "blog-api-collection",
+    "description": "Complete API collection for testing the RESTful Blog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Posts",
+      "item": [
+        {
+          "name": "Get All Posts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/posts",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts"]
+            }
+          }
+        },
+        {
+          "name": "Get All Posts (Filtered by Author)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/posts?author=john",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts"],
+              "query": [
+                {
+                  "key": "author",
+                  "value": "john"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Posts (Published Only)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/posts?published=true",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts"],
+              "query": [
+                {
+                  "key": "published",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Post",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/posts/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "POST_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Post Comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/posts/:id/comments",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts", ":id", "comments"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "POST_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create New Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"My New Blog Post\",\n  \"content\": \"This is the content of my new blog post. It contains interesting information about Node.js and Express.\",\n  \"author\": \"Test User\",\n  \"published\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/posts",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts"]
+            }
+          }
+        },
+        {
+          "name": "Update Post (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Post Title\",\n  \"content\": \"This is the updated content.\",\n  \"author\": \"Test User\",\n  \"published\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/posts/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "POST_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Post (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"published\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/posts/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "POST_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Post",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/posts/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "posts", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "POST_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "Get All Comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/comments",
+              "host": ["{{base_url}}"],
+              "path": ["api", "comments"]
+            }
+          }
+        },
+        {
+          "name": "Get Comments by Post ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/comments?postId=POST_ID_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["api", "comments"],
+              "query": [
+                {
+                  "key": "postId",
+                  "value": "POST_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Comment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/comments/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "comments", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "COMMENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create New Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"postId\": \"POST_ID_HERE\",\n  \"author\": \"John Commenter\",\n  \"content\": \"This is a great post! Thanks for sharing.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/comments",
+              "host": ["{{base_url}}"],
+              "path": ["api", "comments"]
+            }
+          }
+        },
+        {
+          "name": "Update Comment (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": \"John Commenter\",\n  \"content\": \"Updated comment content.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/comments/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "comments", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "COMMENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Comment (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Partially updated comment.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/comments/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "comments", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "COMMENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Comment",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/comments/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "comments", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "COMMENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get API Info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
